@@ -24,7 +24,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN mkdir /tmp/sentry-versions
-RUN git describe --tags --dirty > /tmp/sentry-versions/central
+# RUN git describe --tags --dirty > /tmp/sentry-versions/central
 WORKDIR /server
 RUN git describe --tags --dirty > /tmp/sentry-versions/server
 WORKDIR /client
