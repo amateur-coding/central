@@ -10,21 +10,21 @@ services:
       POSTGRES_PASSWORD: odk
       POSTGRES_DB: odk
     restart: always
-  postgres:
-    # This service upgrades from postgres 9.6 to 14.
-    # The legacy name must be maintained to allow access to the anonymous volume.
-    build:
-      context: .
-      dockerfile: postgres-upgrade.dockerfile
-    volumes:
-      - /var/lib/postgresql/data
-      - postgres14:/var/lib/postgresql/14
-      - ./files/postgres14/upgrade:/postgres14-upgrade
-    environment:
-      PGUSER: odk
-      POSTGRES_INITDB_ARGS: -U odk
-      POSTGRES_PASSWORD: odk
-      POSTGRES_DB: odk
+  # postgres:
+  #   # This service upgrades from postgres 9.6 to 14.
+  #   # The legacy name must be maintained to allow access to the anonymous volume.
+  #   build:
+  #     context: .
+  #     dockerfile: postgres-upgrade.dockerfile
+  #   volumes:
+  #     - /var/lib/postgresql/data
+  #     - postgres14:/var/lib/postgresql/14
+  #     - ./files/postgres14/upgrade:/postgres14-upgrade
+  #   environment:
+  #     PGUSER: odk
+  #     POSTGRES_INITDB_ARGS: -U odk
+  #     POSTGRES_PASSWORD: odk
+  #     POSTGRES_DB: odk
   mail:
     image: "ixdotai/smtp:v0.5.4"
     volumes:
